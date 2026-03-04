@@ -1,5 +1,6 @@
 import './App.css'
 import axios from 'axios'
+import {useState, useEffect} from 'react'
 
 function App() {
 
@@ -7,9 +8,13 @@ function App() {
 
   function fetchAttori(){
     axios.get("https://lanciweb.github.io/demo/api/actors/")
-      .then((res) => setAttori(res.data))
-      console.log(res.data)
+      .then((response) => {
+        setAttori(response.data)
+        console.log(response.data)
+      })
   }
+
+  useEffect(fetchAttori, [])
 
   return (
     <>
